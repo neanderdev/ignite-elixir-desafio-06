@@ -1,9 +1,9 @@
-defmodule Exmeal.MixProject do
+defmodule DailyMeals.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :exmeal,
+      app: :daily_meals,
       version: "0.1.0",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -16,8 +16,7 @@ defmodule Exmeal.MixProject do
         coveralls: :test,
         "coveralls.detail": :test,
         "coveralls.post": :test,
-        "coveralls.html": :test,
-        "coveralls.json": :test
+        "coveralls.html": :test
       ]
     ]
   end
@@ -27,7 +26,7 @@ defmodule Exmeal.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Exmeal.Application, []},
+      mod: {DailyMeals.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -53,8 +52,7 @@ defmodule Exmeal.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.10", only: :test},
-      {:ex_machina, "~> 2.7.0"},
-      {:json_response, git: "https://github.com/joaopealves/json_response"}
+      {:ex_machina, "~> 2.7.0"}
     ]
   end
 

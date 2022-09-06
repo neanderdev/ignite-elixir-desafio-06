@@ -1,4 +1,4 @@
-defmodule Exmeal.DataCase do
+defmodule DailyMeals.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -10,28 +10,30 @@ defmodule Exmeal.DataCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use Exmeal.DataCase, async: true`, although
+  by setting `use DailyMeals.DataCase, async: true`, although
   this option is not recommended for other databases.
   """
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox
+
   using do
     quote do
-      alias Exmeal.Repo
+      alias DailyMeals.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Exmeal.DataCase
+      import DailyMeals.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Exmeal.Repo)
+    :ok = Sandbox.checkout(DailyMeals.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Exmeal.Repo, {:shared, self()})
+      Sandbox.mode(DailyMeals.Repo, {:shared, self()})
     end
 
     :ok

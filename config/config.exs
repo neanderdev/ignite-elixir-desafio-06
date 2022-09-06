@@ -5,20 +5,23 @@
 # is restricted to this project.
 
 # General application configuration
-use Mix.Config
+import Config
 
-config :exmeal,
-  ecto_repos: [Exmeal.Repo]
+config :daily_meals,
+  ecto_repos: [DailyMeals.Repo]
 
-config :exmeal, Exmeal.Repo, migration_primary_key: [type: :binary_id]
+# Configures the repo
+config :daily_meals, DailyMeals.Repo,
+  migration_primary_key: [type: :binary_id],
+  migration_foreing_key: [type: :binary_id]
 
 # Configures the endpoint
-config :exmeal, ExmealWeb.Endpoint,
+config :daily_meals, DailyMealsWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "NanyaNlpv99QO0Vr5rVwc3fw4dDvdOqKtbxoFd+8JTr9O+G+8TGTpZ2569U0NXC1",
-  render_errors: [view: ExmealWeb.ErrorView, accepts: ~w(json), layout: false],
-  pubsub_server: Exmeal.PubSub,
-  live_view: [signing_salt: "XotZZ9EH"]
+  secret_key_base: "0IIrUJu3erk3fnckqvqYHL1f2u9jj/yzYFi02cz+LCr8ypRxPCW4sSs4AxVWoB/7",
+  render_errors: [view: DailyMealsWeb.ErrorView, accepts: ~w(json), layout: false],
+  pubsub_server: DailyMeals.PubSub,
+  live_view: [signing_salt: "pjzzbzIU"]
 
 # Configures Elixir's Logger
 config :logger, :console,
